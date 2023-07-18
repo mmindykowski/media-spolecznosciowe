@@ -1,3 +1,5 @@
+import './AppNav.css'
+
 import { Link } from "react-router-dom";
 
 const AppNav = () => {
