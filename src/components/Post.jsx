@@ -1,4 +1,9 @@
+import { useState } from "react";
+
 const Post = (props) => {
+
+    const [likesCount, setLikesCount] = useState(props.post.likes.length)
+
     return (
         <div className="post">
             <div className="avatar">
@@ -10,6 +15,9 @@ const Post = (props) => {
                     <div className="date">{props.post.created_at.substring(0,10)}</div>
                 </div>
                 <div className="postContent"> <div className="author">{props.post.content}</div></div>
+                <div className="likes">
+                    {likesCount}
+                </div>
             </div>
         </div>
     )
