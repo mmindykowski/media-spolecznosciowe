@@ -43,7 +43,7 @@ const Home = () => {
         {posts.map((post) => {
           return <Post post={post} key={post.id} />;
         })}
-        <button onClick={getNextPosts}>Load more</button>
+        <button className="btn loadMore" onClick={getNextPosts}>Load more</button>
       </div>
     </div>
   );
