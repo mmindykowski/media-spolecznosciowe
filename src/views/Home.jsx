@@ -20,8 +20,16 @@ const Home = () => {
   useEffect(() => {
     getLatestPosts();
   }, []);
-  console.log(posts);
-  return <h2>Home</h2>;
+
+  return (
+    <div className="home">
+      <div className="postList">
+        {posts.map((post) => {
+          return <h2>{post.content}</h2>;
+        })}
+      </div>
+    </div>
+  );
 };
 
 export default Home;
