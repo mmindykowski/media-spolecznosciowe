@@ -1,6 +1,7 @@
 import { useState } from "react";
 import "./Login.css";
 import axios from "axios";
+import { Navigate } from "react-router-dom";
 
 const Login = (props) => {
   const [formData, setFormData] = useState({
@@ -48,6 +49,7 @@ const Login = (props) => {
 
   return (
     <div className="login">
+      {props.user && <Navigate to="/" />}
       <form onSubmit={handleSubmit}>
         {loginMessage && <h2>{loginMessage}</h2>}
         <input

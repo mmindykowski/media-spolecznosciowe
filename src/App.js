@@ -9,8 +9,8 @@ function App() {
 
   return (
     <div className="App">
-      <AppNav />
-      <AppRoutes setUser={setUser}/>
+      <AppNav user={user}/>
+      <AppRoutes user={user} setUser={setUser}/>
     </div>
   );
 }
