@@ -1,11 +1,56 @@
-import './Login.css';
+import { useState } from "react";
+import "./Login.css";
+import axios from "axios";
 
 const Login = () => {
+  const [formData, setFormData] = useState({
+    username: "",
+    password: "",
+  });
+
+  const handleInputChange = (e) => {
+    const target = e.target;
+    const name = target.name;
+
+    setFormData({
+      ...formData,
+      [name]: target.value,
+    });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    axios
+      .post("http://akademia108.pl/api/social-app/user/login", {
+        username: formData.username,
+        password: formData.password,
+      })
+      .then((res) => {
+        console.log(res.data);
+      })
+
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
   return (
     <div className="login">
-      <form>
-        <input type="text" name="username" placeholder="User name" />
-        <input type="password" name="password" placeholder="Password" />
+      <form onSubmit={handleSubmit}>
+        <input
+          type="text"
+          name="username"
+          placeholder="User name"
+          value={formData.username}
+          onChange={handleInputChange}
+        />
+        <input
+          type="password"
+          name="password"
+          placeholder="Password"
+          value={formData.password}
+          onChange={handleInputChange}
+        />
         <button className="btn">Login</button>
       </form>
     </div>
