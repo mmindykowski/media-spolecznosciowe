@@ -8,6 +8,12 @@ const Login = (props) => {
     password: "",
   });
 
+
+  const [loginMessage, setLoginMessage] = useState('')
+
+
+
+
   const handleInputChange = (e) => {
     const target = e.target;
     const name = target.name;
@@ -26,6 +32,13 @@ const Login = (props) => {
         password: formData.password,
       })
       .then((res) => {
+
+if(Array.isArray(res.data.username)) {
+  setLoginMessage(res.data.username[0])
+} else if(Array.isArray(res.data.password)) {
+  setLoginMessage(res.data.password[0])
+}
+
         console.log(res.data);
         props.setUser(res.data);
         localStorage.setItem("user", JSON.stringify(res.data));
@@ -39,6 +52,7 @@ const Login = (props) => {
   return (
     <div className="login">
       <form onSubmit={handleSubmit}>
+        {loginMessage && <h2>{loginMessage}</h2>}
         <input
           type="text"
           name="username"
