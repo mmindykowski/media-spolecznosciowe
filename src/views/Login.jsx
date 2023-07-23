@@ -2,7 +2,7 @@ import { useState } from "react";
 import "./Login.css";
 import axios from "axios";
 
-const Login = () => {
+const Login = (props) => {
   const [formData, setFormData] = useState({
     username: "",
     password: "",
@@ -27,6 +27,8 @@ const Login = () => {
       })
       .then((res) => {
         console.log(res.data);
+        props.setUser(res.data);
+        localStorage.setItem("user", JSON.stringify(res.data));
       })
 
       .catch((error) => {
