@@ -16,6 +16,8 @@ const Login = (props) => {
     const name = target.name;
 
     setFormData({
+
+      // Spread syntax - kopiuje caly obiekt
       ...formData,
       [name]: target.value,
     });
@@ -24,6 +26,9 @@ const Login = (props) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     axios
+
+    // Backend mi to określa co wysylam a czego nie podczas zapytania api. Pola pod którymi maja byc przeslane dane sa sztywno zdefiniowane przez backend(nie mozemy zmienic ich nazw) //
+    
       .post("http://akademia108.pl/api/social-app/user/login", {
         username: formData.username,
         password: formData.password,
