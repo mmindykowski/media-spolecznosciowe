@@ -5,15 +5,15 @@ import AppRoutes from "./routes/AppRoutes";
 import Axios from "axios";
 
 function App() {
+  const [user, setUser] = useState(JSON.parse(localStorage.getItem("user")));
 
-  const [user, setUser] = useState(JSON.parse(localStorage.getItem('user')));
-
-  Axios.defaults.headers.common['Authorization'] = "Bearer" + (user ? user.jwt_token : "");
+  Axios.defaults.headers.common["Authorization"] =
+    "Bearer" + (user ? user.jwt_token : "");
 
   return (
     <div className="App">
-      <AppNav user={user}/>
-      <AppRoutes user={user} setUser={setUser}/>
+      <AppNav user={user} />
+      <AppRoutes user={user} setUser={setUser} />
     </div>
   );
 }
