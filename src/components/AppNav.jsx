@@ -9,6 +9,7 @@ const AppNav = (props) => {
         <li>
           <Link to="/">Home</Link>
         </li>
+
         {!props.user && (
           <li>
             <Link to="/login">Login</Link>
@@ -17,6 +18,11 @@ const AppNav = (props) => {
         {!props.user && (
           <li>
             <Link to="/signup">SignUp</Link>
+          </li>
+        )}
+        {props.user && (
+          <li>
+            <Link to="/">Log out</Link>
           </li>
         )}
       </ul>
