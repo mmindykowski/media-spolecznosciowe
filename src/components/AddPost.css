@@ -1,0 +1,21 @@
+.add-post {
+  max-width: 90vw;
+
+  padding: 25px;
+  margin: 5px 5px;
+}
+
+.text-content {
+  width: 95%;
+  height: 150px;
+  resize: none;
+  display: flex;
+  padding: 15px;
+  justify-content: space-between;
+  color: black;
+  
+}
+
+.addpost {
+  margin-top: 10px;
+}

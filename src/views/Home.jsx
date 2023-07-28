@@ -1,5 +1,6 @@
 import axios from "axios";
 import Post from "../components/Post";
+import AddPost from "../components/AddPost";
 import { useEffect, useState } from "react";
 import "./Home.css";
 
@@ -39,11 +40,15 @@ const Home = () => {
   console.log(posts);
   return (
     <div className="home">
+      <AddPost />
+
       <div className="postList">
         {posts.map((post) => {
           return <Post post={post} key={post.id} />;
         })}
-        <button className="btn loadMore" onClick={getNextPosts}>Load more</button>
+        <button className="btn loadMore" onClick={getNextPosts}>
+          Load more
+        </button>
       </div>
     </div>
   );
