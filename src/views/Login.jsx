@@ -51,19 +51,6 @@ const Login = (props) => {
       });
   };
 
-  // const logOut = (e) => {
-  //   e.preventDefault();
-  //   axios.post("http://akademia108.pl/api/social-app/user/logout")
-  //   .then((res) => {
-  //     setUser
-  //   })
-
-  //   .catch((error) => {
-  //     console.log(error);
-  //   });
-  
-  // };
-
   return (
     <div className="login">
       {props.user && <Navigate to="/" />}
