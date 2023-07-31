@@ -37,7 +37,9 @@ const AppNav = (props) => {
         )}
         {props.user && (
           <li>
-            <Link to="/" onClick={logOut}>Log out</Link>
+            <Link to="/" onClick={logOut}>
+              Log out
+            </Link>
           </li>
         )}
       </ul>
