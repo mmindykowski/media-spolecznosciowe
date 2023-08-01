@@ -2,21 +2,25 @@ import { useState } from "react";
 import "./AddPost.css";
 
 const AddPost = () => {
-  const [postContent, setPostContent] = useState();
+  const [textarea, setTextarea] = useState("Napisz coś...");
 
-  const addPost = () => {
-    let post = document.getElementsByClassName("text-content");
-    console.log(post.value);
+  const addPost = (e) => {
+    setTextarea(e.target.value);
+    console.log(textarea);
   };
 
   return (
     <div className="add-post">
-      <textarea rows="4" cols="50" className="text-content">
-        Napisz co sądzisz...
-      </textarea>
-      <button className="btn addpost" onClick={addPost}>
-        Opublikuj
-      </button>
+      <form action="">
+        <textarea
+          value={textarea}
+          onChange={addPost}
+          rows="4"
+          cols="50"
+          className="text-content"
+        ></textarea>
+        <button className="btn addpost">Opublikuj</button>
+      </form>
     </div>
   );
 };
