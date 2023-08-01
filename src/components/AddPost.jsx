@@ -2,9 +2,9 @@ import { useState } from "react";
 import "./AddPost.css";
 
 const AddPost = () => {
-  const [textarea, setTextarea] = useState("Napisz coś...");
+  const [textarea, setTextarea] = useState("Napisz coś");
 
-  const addPost = (e) => {
+  const handleChange = (e) => {
     setTextarea(e.target.value);
     console.log(textarea);
   };
@@ -14,7 +14,7 @@ const AddPost = () => {
       <form action="">
         <textarea
           value={textarea}
-          onChange={addPost}
+          onChange={handleChange}
           rows="4"
           cols="50"
           className="text-content"
