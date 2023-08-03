@@ -1,19 +1,26 @@
 import { useState } from "react";
 import "./AddPost.css";
+import axios from "axios";
 
 const AddPost = (props) => {
-  // const [textarea, setTextarea] = useState("Napisz coś");
+  const [postContent, setPostContent] = useState("");
 
-  // const handleChange = (e) => {
-  //   setTextarea(e.target.value);
-  //   console.log(textarea);
-  // };
+
+  // console.log(postContent);
+
+
+  const addPost = (e) => {
+    e.preventDefault();
+  };
+
 
   return (
     <div className="add-post">
       <form>
         <textarea
           placeholder="Dodaj post..."
+          onChange={(e) => setPostContent(e.target.value)}
+          value={postContent}
           className="text-content"
         ></textarea>
 

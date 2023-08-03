@@ -1,13 +1,15 @@
 .add-post {
   max-width: 100vw;
   padding: 25px;
+  text-align: right;
+  border: 1px solid black;
 }
 
 .text-content {
   width: 90%;
   height: 150px;
   margin: 15px auto;
-  resize: none;
+  resize: vertical;
   display: flex;
   padding: 15px;
   justify-content: space-between;
