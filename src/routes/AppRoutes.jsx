@@ -7,7 +7,7 @@ import Login from "../views/Login";
 const AppRoutes = (props) => {
   return (
     <Routes>
-      <Route path="/" element={<Home />} />
+      <Route path="/" element={<Home user={props.user} setUser={props.setUser} />}  />
       <Route path="/login" element={<Login user={props.user} setUser={props.setUser} />} />
       <Route path="/signup" element={<SignUp />} />
     </Routes>

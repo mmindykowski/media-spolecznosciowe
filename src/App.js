@@ -2,12 +2,12 @@ import { useState } from "react";
 import "./App.css";
 import AppNav from "./components/AppNav";
 import AppRoutes from "./routes/AppRoutes";
-import Axios from "axios";
+import axios from "axios";
 
 function App() {
   const [user, setUser] = useState(JSON.parse(localStorage.getItem("user")));
 
-  Axios.defaults.headers.common["Authorization"] =
+  axios.defaults.headers.common["Authorization"] =
     "Bearer" + (user ? user.jwt_token : "");
 
   return (

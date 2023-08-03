@@ -4,7 +4,7 @@ import AddPost from "../components/AddPost";
 import { useEffect, useState } from "react";
 import "./Home.css";
 
-const Home = () => {
+const Home = (props) => {
   const [posts, setPosts] = useState([]);
 
   const getLatestPosts = () => {
@@ -35,12 +35,11 @@ const Home = () => {
 
   useEffect(() => {
     getLatestPosts();
-  }, []);
+  }, [props.user])
 
-  console.log(posts);
   return (
     <div className="home">
-      <AddPost />
+      {props.user && <AddPost />}
 
       <div className="postList">
         {posts.map((post) => {

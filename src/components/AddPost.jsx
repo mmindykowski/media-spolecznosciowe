@@ -1,24 +1,22 @@
 import { useState } from "react";
 import "./AddPost.css";
 
-const AddPost = () => {
-  const [textarea, setTextarea] = useState("Napisz coś");
+const AddPost = (props) => {
+  // const [textarea, setTextarea] = useState("Napisz coś");
 
-  const handleChange = (e) => {
-    setTextarea(e.target.value);
-    console.log(textarea);
-  };
+  // const handleChange = (e) => {
+  //   setTextarea(e.target.value);
+  //   console.log(textarea);
+  // };
 
   return (
     <div className="add-post">
-      <form action="">
+      <form>
         <textarea
-          value={textarea}
-          onChange={handleChange}
-          rows="4"
-          cols="50"
+          placeholder="Dodaj post..."
           className="text-content"
         ></textarea>
+
         <button className="btn addpost">Opublikuj</button>
       </form>
     </div>
