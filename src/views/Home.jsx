@@ -19,6 +19,20 @@ const Home = (props) => {
       });
   };
 
+  const getPrevPosts = () => {
+    axios
+      .post("http://akademia108.pl/api/social-app/post/newer-then", {
+        date: posts[0].created_at,
+      })
+      .then((res) => {
+        setPosts(res.data.concat(posts));
+      })
+
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
   const getNextPosts = () => {
     axios
       .post("http://akademia108.pl/api/social-app/post/older-then", {
@@ -35,11 +49,11 @@ const Home = (props) => {
 
   useEffect(() => {
     getLatestPosts();
-  }, [props.user])
+  }, [props.user]);
 
   return (
     <div className="home">
-      {props.user && <AddPost />}
+      {props.user && <AddPost getPrevPosts={getPrevPosts} />}
 
       <div className="postList">
         {posts.map((post) => {

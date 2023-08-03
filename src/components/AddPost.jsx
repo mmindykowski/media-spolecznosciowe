@@ -19,7 +19,7 @@ const AddPost = (props) => {
         content: postContent,
       })
       .then((res) => {
-        console.log(res.data);
+        props.getPrevPosts();
         setPostContent('')
       })
       .catch((error) => {
