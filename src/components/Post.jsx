@@ -6,13 +6,20 @@ import axios from "axios";
 const Post = (props) => {
   const [likesCount, setLikesCount] = useState(props.post.likes.length);
 
+  const [deleteModalVisible, setDeleteModalVisible] = useState(false);
+
   const deletePost = (id) => {
     axios
       .post("https://akademia108.pl/api/social-app/post/delete", {
         post_id: id,
       })
       .then((res) => {
-        console.log(res.data);
+        // console.log(res.data);
+        props.setPosts((posts) => {
+          // wracaja wszystkie posty różne od tego usuwanego posta //
+
+          return posts.filter((post) => post.id !== res.data.post_id);
+        });
       })
       .catch((error) => {
         console.log(error);
@@ -37,11 +44,28 @@ const Post = (props) => {
           {/* Uzytkownik przestał istniec (null albo undefined) wiec uzywamy operatora znaku zapytania, zeby nie wywalalo bledu jak bedzie uzytkownik wylogowany   */}
 
           {props.user?.username === props.post.user.username && (
-            <button className="btn">Usuń</button>
+            <button className="btn" onClick={() => setDeleteModalVisible(true)}>
+              Usuń
+            </button>
           )}
           {likesCount}
         </div>
       </div>
+
+      {deleteModalVisible && (
+        <div className="deleteConfirmation">
+          <h3>Are you sure you want to delete post?</h3>
+          <button className="btn yes" onClick={() => deletePost(props.post.id)}>
+            Yes
+          </button>
+          <button
+            className="btn no"
+            onClick={() => setDeleteModalVisible(false)}
+          >
+            No
+          </button>
+        </div>
+      )}
     </div>
   );
 };
