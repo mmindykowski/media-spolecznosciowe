@@ -1,8 +1,23 @@
 import { useState } from "react";
 import "./Post.css";
 
+import axios from "axios";
+
 const Post = (props) => {
   const [likesCount, setLikesCount] = useState(props.post.likes.length);
+
+  const deletePost = (id) => {
+    axios
+      .post("https://akademia108.pl/api/social-app/post/delete", {
+        post_id: id,
+      })
+      .then((res) => {
+        console.log(res.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
   return (
     <div className="post">
