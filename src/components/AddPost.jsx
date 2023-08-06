@@ -20,7 +20,7 @@ const AddPost = (props) => {
       })
       .then((res) => {
         props.getPrevPosts();
-        setPostContent('')
+        setPostContent("");
       })
       .catch((error) => {
         console.log(error);
