@@ -8,6 +8,11 @@ const Post = (props) => {
 
   const [deleteModalVisible, setDeleteModalVisible] = useState(false);
 
+  const [doesUserLiked, setDoesUserLiked] = useState(
+    props.post.likes.filter((like) => like.username === props.user?.username)
+      .length !== 0
+  );
+
   const deletePost = (id) => {
     axios
       .post("https://akademia108.pl/api/social-app/post/delete", {
@@ -23,6 +28,21 @@ const Post = (props) => {
       })
       .catch((error) => {
         console.log(error);
+      });
+  };
+
+  const likePost = (id, isLiked) => {
+    axios
+      .post(
+        "https://akademia108.pl/api/social-app/post/" +
+          (isLiked ? "dislike" : "like"),
+        {
+          post_id: id,
+        }
+      )
+      .then(() => {
+        setLikesCount(likesCount + (isLiked ? -1 : 1));
+        setDoesUserLiked(!isLiked);
       });
   };
 
@@ -48,8 +68,12 @@ const Post = (props) => {
               Usuń
             </button>
           )}
-          <button className="btn">Like</button>
-          <button className="btn">Dislike</button>
+
+
+
+          <button className="btn" onClick={()=>likePost(props.post.id, doesUserLiked)}>{doesUserLiked? 'Dislike': 'Like'}</button>
+
+
           {likesCount}
         </div>
       </div>
