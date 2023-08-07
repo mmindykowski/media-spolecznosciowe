@@ -48,6 +48,8 @@ const Post = (props) => {
               Usuń
             </button>
           )}
+          <button className="btn">Like</button>
+          <button className="btn">Dislike</button>
           {likesCount}
         </div>
       </div>
