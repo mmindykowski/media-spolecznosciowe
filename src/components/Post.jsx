@@ -69,10 +69,14 @@ const Post = (props) => {
             </button>
           )}
 
-
-
-          {props.user && <button className="btn" onClick={()=>likePost(props.post.id, doesUserLiked)}>{doesUserLiked? 'Dislike': 'Like'}</button>}
-
+          {props.user && (
+            <button
+              className="btn"
+              onClick={() => likePost(props.post.id, doesUserLiked)}
+            >
+              {doesUserLiked ? "Dislike" : "Like"}
+            </button>
+          )}
 
           {likesCount}
         </div>
