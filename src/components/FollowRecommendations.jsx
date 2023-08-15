@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const FollowRecommendations = (props) => {
   const [recommendations, setRecommendations] = useState([]);
@@ -13,6 +13,12 @@ const FollowRecommendations = (props) => {
         console.log(error);
       });
   };
+
+  // po załadowaniu komponoentu
+
+  useEffect(() => {
+    getRecommendations();
+  }, [props.posts]);
 
   return <div className="followRecommendation">follows</div>;
 };
