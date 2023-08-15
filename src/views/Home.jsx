@@ -3,6 +3,7 @@ import Post from "../components/Post";
 import AddPost from "../components/AddPost";
 import { useEffect, useState } from "react";
 import "./Home.css";
+import FollowRecommendations from "../components/FollowRecommendations";
 
 const Home = (props) => {
   const [posts, setPosts] = useState([]);
@@ -54,7 +55,7 @@ const Home = (props) => {
   return (
     <div className="home">
       {props.user && <AddPost getPrevPosts={getPrevPosts} />}
-
+      {props.user && <FollowRecommendations  user={props.user} getLatestPosts={getLatestPosts} />}
       <div className="postList">
         {posts.map((post) => {
           return (
