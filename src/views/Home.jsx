@@ -55,7 +55,7 @@ const Home = (props) => {
   return (
     <div className="home">
       {props.user && <AddPost getPrevPosts={getPrevPosts} />}
-      {props.user && <FollowRecommendations  user={props.user} getLatestPosts={getLatestPosts} />}
+      {props.user && <FollowRecommendations  user={props.user} getLatestPosts={getLatestPosts} posts={posts}/>}
       <div className="postList">
         {posts.map((post) => {
           return (
