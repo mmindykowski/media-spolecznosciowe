@@ -1,3 +1,5 @@
+import axios from "axios";
+
 import { useEffect, useState } from "react";
 
 const FollowRecommendations = (props) => {
@@ -20,6 +22,10 @@ const FollowRecommendations = (props) => {
     getRecommendations();
   }, [props.posts]);
 
+
+  console.log(recommendations);
+
+  
   return <div className="followRecommendation">follows</div>;
 };
 
