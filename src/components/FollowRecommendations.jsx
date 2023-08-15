@@ -23,7 +23,20 @@ const FollowRecommendations = (props) => {
     getRecommendations();
   }, [props.posts]);
 
-  console.log(recommendations);
+  //   console.log(recommendations);
+
+  const follow = (id) => {
+    axios
+      .post("https://akademia108.pl/api/social-app/follows/follow", {
+        leader_id: id,
+      })
+      .then(() => {
+        props.getLatestPosts();
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
   return (
     <div className="followRecommendations">
@@ -35,7 +48,9 @@ const FollowRecommendations = (props) => {
               alt={recommendation.username}
             />
             <h3>{recommendation.username}</h3>
-            <button className="btn">Folow</button>
+            <button className="btn" onClick={() => follow(recommendation.id)}>
+              Folow
+            </button>
           </div>
         );
       })}
