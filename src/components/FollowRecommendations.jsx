@@ -25,8 +25,16 @@ const FollowRecommendations = (props) => {
 
   console.log(recommendations);
 
-  
-  return <div className="followRecommendation">follows</div>;
+
+  return <div className="followRecommendation">{recommendations.map(recommendation => {
+    return (
+        <div className="followRecommendation" key={recommendation.id}>
+            <img src={recommendation.avatar_url} alt={recommendation.username} />
+            <h3>{recommendation.username}</h3>
+            <button className="btn">Folow</button>
+        </div>
+    )
+  })}</div>;
 };
 
 export default FollowRecommendations;
