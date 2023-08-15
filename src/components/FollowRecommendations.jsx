@@ -1,3 +1,4 @@
+import "./FollowRecommendations.css";
 import axios from "axios";
 
 import { useEffect, useState } from "react";
@@ -22,19 +23,24 @@ const FollowRecommendations = (props) => {
     getRecommendations();
   }, [props.posts]);
 
-
   console.log(recommendations);
 
-
-  return <div className="followRecommendation">{recommendations.map(recommendation => {
-    return (
-        <div className="followRecommendation" key={recommendation.id}>
-            <img src={recommendation.avatar_url} alt={recommendation.username} />
+  return (
+    <div className="followRecommendations">
+      {recommendations.map((recommendation) => {
+        return (
+          <div className="followRecommendation" key={recommendation.id}>
+            <img
+              src={recommendation.avatar_url}
+              alt={recommendation.username}
+            />
             <h3>{recommendation.username}</h3>
             <button className="btn">Folow</button>
-        </div>
-    )
-  })}</div>;
+          </div>
+        );
+      })}
+    </div>
+  );
 };
 
 export default FollowRecommendations;
