@@ -4,6 +4,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 
 const FollowRecommendations = (props) => {
+  
   const [recommendations, setRecommendations] = useState([]);
 
   const getRecommendations = () => {
