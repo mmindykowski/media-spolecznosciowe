@@ -1,6 +1,9 @@
-const Signup = () => {
+import {Navigate} from "react-router-dom"
+
+const Signup = (props) => {
   return (
     <div className="signup">
+      {props.user && <Navigate to="/"/>}
     <form>
       <input type="text" name="username" placeholder="User name"/>
       <input type="email" name="email" placeholder="E-mail"/>
