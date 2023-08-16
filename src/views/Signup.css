@@ -2,7 +2,7 @@
    border: 1px solid black; 
    max-width: 600px;
    margin: auto;
-   padding: 15px;
+   padding: 20px;
 }
 
 .signup form input {
@@ -10,4 +10,9 @@
     width: 100%;
     margin-bottom: 5px;
     padding: 5px;
+}
+
+.signup .btn {
+    display: inline-block;
+    margin: 15px 0;
 }

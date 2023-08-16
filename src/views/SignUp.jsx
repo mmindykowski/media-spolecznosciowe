@@ -10,7 +10,7 @@ const Signup = (props) => {
       <input type="email" name="email" placeholder="E-mail"/>
       <input type="password" name="password" placeholder="Password"/>
       <input type="password" name="confirmPassword" placeholder="Confirm password"/>
-      
+      <button className='btn'>Sign up</button>
     </form>
     </div>
   );
