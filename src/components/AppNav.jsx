@@ -32,7 +32,7 @@ const AppNav = (props) => {
         )}
         {!props.user && (
           <li>
-            <Link to="/signup">SignUp</Link>
+            <Link to="/signup">Signup</Link>
           </li>
         )}
         {props.user && (
