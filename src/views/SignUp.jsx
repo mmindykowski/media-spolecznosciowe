@@ -1,3 +1,4 @@
+import './Signup.css'
 import {Navigate} from "react-router-dom"
 
 const Signup = (props) => {
