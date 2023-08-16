@@ -10,6 +10,34 @@ const Signup = (props) => {
     confirmPassword: "",
   });
 
+  const [errors, setErrors] = useState({
+    username: "",
+    email: "",
+    password: "",
+    confirmPassword: "",
+  });
+
+  const validate = () => {
+    let validationErrors = {
+      username: false,
+      email: false,
+      password: false,
+      confirmPassword: false,
+    };
+
+    if (formData.username.length < 4) {
+      validationErrors.username = true;
+      setErrors((prevErrors) => {
+        return {
+          ...prevErrors,
+          username: "Username should have at least 4 characters",
+        };
+      });
+    }
+
+    return !validationErrors.username;
+  };
+
   const handleInputChange = (e) => {
     const target = e.target;
     const name = target.name;
@@ -21,17 +49,28 @@ const Signup = (props) => {
     });
   };
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    if (!validate()) {
+      return;
+    }
+
+    console.log("wysyłam");
+  };
+
   // console.log(formData);
   return (
     <div className="signup">
       {props.user && <Navigate to="/" />}
-      <form>
+      <form onSubmit={handleSubmit}>
         <input
           type="text"
           name="username"
           placeholder="User name"
           onChange={handleInputChange}
         />
+        {errors.username && <p>{errors.username}</p>}
         <input
           type="email"
           name="email"
