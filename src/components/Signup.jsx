@@ -1,5 +1,16 @@
 const Signup = () => {
-    return <h2>Signup</h2>
-}
+  return (
+    <div className="signup">
+      <form type="text" name="username" placeholder="User name"></form>
+      <form type="email" name="email" placeholder="User e-mail"></form>
+      <form type="password" name="password" placeholder="Password"></form>
+      <form
+        type="password"
+        name="confirmPassword"
+        placeholder="Confirm password"
+      ></form>
+    </div>
+  );
+};
 
-export default Signup
+export default Signup;
