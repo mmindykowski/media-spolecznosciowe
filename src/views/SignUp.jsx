@@ -42,10 +42,45 @@ const Signup = (props) => {
         };
       });
     } else {
-      validationErrors.username = false
+      validationErrors.username = false;
+      setErrors((prevErrors) => {
+        return {
+          ...prevErrors,
+          username: "",
+        };
+      });
     }
 
-    return !validationErrors.username;
+    // E-mail
+
+    if (
+      !/^[a-z\d]+[\w\d.-]*@(?:[a-z\d]+[a-z\d-]+\.){1,5}[a-z]{2,6}$/i.test(
+        formData.email.trim()
+      )
+    ) {
+      validationErrors.email = true;
+      setErrors((prevErrors) => {
+        return {
+          ...prevErrors,
+          email: "There is no valid email",
+        };
+      });
+    } else {
+      validationErrors.email = false;
+      setErrors((prevErrors) => {
+        return {
+          ...prevErrors,
+          email: "",
+        };
+      });
+    }
+
+    return (
+      !validationErrors.username &&
+      !validationErrors.email &&
+      !validationErrors.password &&
+      !validationErrors.confirmPassword
+    );
   };
 
   const handleInputChange = (e) => {
@@ -87,6 +122,7 @@ const Signup = (props) => {
           placeholder="E-mail"
           onChange={handleInputChange}
         />
+        {errors.email && <p>{errors.email}</p>}
         <input
           type="password"
           name="password"
