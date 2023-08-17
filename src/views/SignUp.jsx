@@ -75,6 +75,43 @@ const Signup = (props) => {
       });
     }
 
+
+    // Password
+
+
+    if (formData.password.trim().length < 6) {
+      validationErrors.password = true;
+      setErrors((prevErrors) => {
+        return {
+          ...prevErrors,
+          password: "Password should have ar leasr 6 characters",
+        };
+      });
+    } else if (!/^[^\s]*$/.test(formData.password.trim())) {
+      setErrors((prevErrors) => {
+        return {
+          ...prevErrors,
+          password: "Password should have empty characters",
+        };
+      });
+    } else if (!/[!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?]+/.test(formData.password.trim())) {
+      validationErrors.password = true;
+      setErrors((prevErrors) => {
+        return {
+          ...prevErrors,
+          password: "Password mus t contain one of charts: ! # @ $ % ",
+        };
+      });
+    } else {
+      validationErrors.password = false;
+      setErrors((prevErrors) => {
+        return {
+          ...prevErrors,
+          password: "",
+        };
+      });
+    }
+
     return (
       !validationErrors.username &&
       !validationErrors.email &&
@@ -129,6 +166,7 @@ const Signup = (props) => {
           placeholder="Password"
           onChange={handleInputChange}
         />
+        {errors.password && <p>{errors.password}</p>}
         <input
           type="password"
           name="confirmPassword"
