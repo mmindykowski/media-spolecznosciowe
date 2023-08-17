@@ -24,8 +24,8 @@ const Signup = (props) => {
       password: false,
       confirmPassword: false,
     };
-
-    if (formData.username.length < 4) {
+// trim to usuwanie białych znaków
+    if (formData.username.trim().length < 4) {
       validationErrors.username = true;
       setErrors((prevErrors) => {
         return {
@@ -33,7 +33,7 @@ const Signup = (props) => {
           username: "Username should have at least 4 characters",
         };
       });
-    }
+    } else if (!/^[^\s]*$/.test(formData.username.trim()))
 
     return !validationErrors.username;
   };
