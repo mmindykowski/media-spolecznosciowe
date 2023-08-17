@@ -24,7 +24,7 @@ const Signup = (props) => {
       password: false,
       confirmPassword: false,
     };
-// trim to usuwanie białych znaków
+    // trim to usuwanie białych znaków
     if (formData.username.trim().length < 4) {
       validationErrors.username = true;
       setErrors((prevErrors) => {
@@ -33,7 +33,17 @@ const Signup = (props) => {
           username: "Username should have at least 4 characters",
         };
       });
-    } else if (!/^[^\s]*$/.test(formData.username.trim()))
+    } else if (!/^[^\s]*$/.test(formData.username.trim())) {
+      validationErrors.username = true;
+      setErrors((prevErrors) => {
+        return {
+          ...prevErrors,
+          username: "Username should'n have empty characters",
+        };
+      });
+    } else {
+      validationErrors.username = false
+    }
 
     return !validationErrors.username;
   };
