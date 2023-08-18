@@ -1,6 +1,7 @@
 import { useState } from "react";
-import "./Signup.css";
 import { Navigate } from "react-router-dom";
+import { Link } from "react-router-dom";
+import "./Signup.css";
 import axios from "axios";
 
 const Signup = (props) => {
@@ -177,7 +178,7 @@ const Signup = (props) => {
         let resData = res.data;
         if (resData.signedup) {
           setSignUpMessage("Account created");
-          setSignUpDone(true)
+          setSignUpDone(true);
         } else {
           if (resData.message.username) {
             setSignUpMessage(resData.message.username[0]);
@@ -226,7 +227,17 @@ const Signup = (props) => {
           onChange={handleInputChange}
         />
         {errors.confirmPassword && <p>{errors.confirmPassword}</p>}
-        <button className="btn">Sign up</button>
+        <button className="btn" disabled={signUpDone}>
+          Sign up
+        </button>
+
+        {signUpDone && (
+          <div>
+            <Link to="/login" className="btn">
+              Go to login
+            </Link>
+          </div>
+        )}
       </form>
     </div>
   );
