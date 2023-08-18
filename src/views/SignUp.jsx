@@ -75,9 +75,7 @@ const Signup = (props) => {
       });
     }
 
-
     // Password
-
 
     if (formData.password.trim().length < 6) {
       validationErrors.password = true;
@@ -94,7 +92,9 @@ const Signup = (props) => {
           password: "Password should have empty characters",
         };
       });
-    } else if (!/[!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?]+/.test(formData.password.trim())) {
+    } else if (
+      !/[!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?]+/.test(formData.password.trim())
+    ) {
       validationErrors.password = true;
       setErrors((prevErrors) => {
         return {
@@ -104,6 +104,26 @@ const Signup = (props) => {
       });
     } else {
       validationErrors.password = false;
+      setErrors((prevErrors) => {
+        return {
+          ...prevErrors,
+          password: "",
+        };
+      });
+    }
+
+    // Confirm password
+
+    if (formData.password.trim() === formData.password.trim()) {
+      validationErrors.confirmPassword = true;
+      setErrors((prevErrors) => {
+        return {
+          ...prevErrors,
+          password: "Passwords should be the same",
+        };
+      });
+    } else {
+      validationErrors.confirmPassword = false;
       setErrors((prevErrors) => {
         return {
           ...prevErrors,
