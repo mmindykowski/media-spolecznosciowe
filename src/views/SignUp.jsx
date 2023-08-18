@@ -114,12 +114,12 @@ const Signup = (props) => {
 
     // Confirm password
 
-    if (formData.password.trim() === formData.password.trim()) {
+    if (formData.password.trim() !== formData.confirmPassword.trim()) {
       validationErrors.confirmPassword = true;
       setErrors((prevErrors) => {
         return {
           ...prevErrors,
-          password: "Passwords should be the same",
+          confirmPassword: "Passwords should be the same",
         };
       });
     } else {
@@ -127,7 +127,7 @@ const Signup = (props) => {
       setErrors((prevErrors) => {
         return {
           ...prevErrors,
-          password: "",
+          confirmPassword: "",
         };
       });
     }
