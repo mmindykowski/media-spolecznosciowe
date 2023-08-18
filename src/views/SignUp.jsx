@@ -19,6 +19,7 @@ const Signup = (props) => {
   });
 
   const [signUpMessage, setSignUpMessage] = useState("");
+  const [signUpDone, setSignUpDone] = useState(false);
 
   const validate = () => {
     let validationErrors = {
@@ -176,6 +177,7 @@ const Signup = (props) => {
         let resData = res.data;
         if (resData.signedup) {
           setSignUpMessage("Account created");
+          setSignUpDone(true)
         } else {
           if (resData.message.username) {
             setSignUpMessage(resData.message.username[0]);
