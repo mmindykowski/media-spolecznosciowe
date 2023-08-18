@@ -16,3 +16,8 @@
     display: inline-block;
     margin: 15px 0;
 }
+
+.signup .btn:disabled {
+    background-color: grey;
+    cursor: not-allowed;
+}
