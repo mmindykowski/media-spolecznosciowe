@@ -18,6 +18,8 @@ const Signup = (props) => {
     confirmPassword: "",
   });
 
+  const [signUpMessage, setSignUpMessage] = useState("");
+
   const validate = () => {
     let validationErrors = {
       username: false,
@@ -182,6 +184,7 @@ const Signup = (props) => {
     <div className="signup">
       {props.user && <Navigate to="/" />}
       <form onSubmit={handleSubmit}>
+        {<h2></h2>}
         <input
           type="text"
           name="username"
