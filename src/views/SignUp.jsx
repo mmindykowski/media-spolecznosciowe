@@ -172,6 +172,17 @@ const Signup = (props) => {
       })
       .then((res) => {
         console.log(res.data);
+
+        let resData = res.data;
+        if (resData.signedup) {
+          setSignUpMessage("Account created");
+        } else {
+          if (resData.message.username) {
+            setSignUpMessage(resData.message.username[0]);
+          } else if (resData.message.email) {
+            setSignUpMessage(resData.message.email[0]);
+          }
+        }
       })
 
       .catch((error) => {
@@ -184,7 +195,7 @@ const Signup = (props) => {
     <div className="signup">
       {props.user && <Navigate to="/" />}
       <form onSubmit={handleSubmit}>
-        {<h2></h2>}
+        {signUpMessage && <h2>{signUpMessage}</h2>}
         <input
           type="text"
           name="username"
