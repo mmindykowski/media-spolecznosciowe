@@ -1,6 +1,7 @@
 import { useState } from "react";
 import "./Signup.css";
 import { Navigate } from "react-router-dom";
+import axios from "axios";
 
 const Signup = (props) => {
   const [formData, setFormData] = useState({
@@ -158,7 +159,22 @@ const Signup = (props) => {
       return;
     }
 
-    console.log("wysyłam");
+    axios
+
+      // Backend mi to określa co wysylam a czego nie podczas zapytania api. Pola pod którymi maja byc przeslane dane sa sztywno zdefiniowane przez backend(nie mozemy zmienic ich nazw) //
+
+      .post("http://akademia108.pl/api/social-app/user/signup", {
+        username: formData.username,
+        email: formData.email,
+        password: formData.password,
+      })
+      .then((res) => {
+        console.log(res.data);
+      })
+
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   // console.log(formData);
