@@ -193,6 +193,7 @@ const Signup = (props) => {
           placeholder="Confirm password"
           onChange={handleInputChange}
         />
+        {errors.confirmPassword && <p>{errors.confirmPassword}</p>}
         <button className="btn">Sign up</button>
       </form>
     </div>
